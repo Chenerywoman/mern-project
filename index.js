@@ -14,6 +14,8 @@ mongoose.connect( process.env.DB_URL, {
     useUnifiedTopology: true
 })
 .then(() => console.log("MongoDB is connected"));
+
+
 app.get("/", (req, res) => {
     res.send("Hello from Nodejs");
 });
@@ -30,7 +32,20 @@ app.get("/api/users", (req, res) => {
         }
         ]
     })
-})
+});
+
+app.post("/register", (req, res) => {
+    console.log("reaching register on backend")
+    console.log(req.body)
+  
+
+    // const newUser = await User.create() etc.
+
+    res.json({
+        message: "user was registered"
+    })
+});
+
 app.listen( 5000, () => {
     console.log("Server is running on Port 5000");
 });
